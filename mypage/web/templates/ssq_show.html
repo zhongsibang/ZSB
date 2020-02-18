@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}双色球-往期开奖{% endblock %}
+{% block body %}
+<link rel="stylesheet"  href="{{ url_for('static',filename='ssq_show.css') }}">
+<div class="ssqmain">
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+    <li>
+      <a href="{{ url_for('ssq_show',page=context.currentpage-1)}}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+      {% for page in range(context.pageinfo[0],context.pageinfo[1]+1) %}
+        {% if page==context.currentpage %}
+            <li class="active"><a href="#">{{ page }}</a></li>
+        {% else %}
+            <li><a href="{{ url_for('ssq_show',page=page)}}">{{ page }}</a></li>
+        {% endif %}
+      {% endfor %}
+    <li>
+      <a href="{{ url_for('ssq_show',page=context.currentpage+1)}}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+<table class="table table-hover">
+    <tr>
+        <td align="center" valign="middle" style="font: bold 16px/20px 'Microsoft YaHei', '微软雅黑', Arial;">期号</td>
+        <td align="center" valign="middle" colspan="6" style="font: bold 16px/20px 'Microsoft YaHei', '微软雅黑', Arial;">红球</td>
+        <td align="center" valign="middle" style="font: bold 16px/20px 'Microsoft YaHei', '微软雅黑', Arial;">蓝球</td>
+    </tr>
+    {% for num in context.res %}
+    <tr>
+        <td class="qihao">{{ num[0] }}</td>
+        <td class="rqiu">{{ num[1] }}</td>
+        <td class="rqiu">{{ num[2] }}</td>
+        <td class="rqiu">{{ num[3] }}</td>
+        <td class="rqiu">{{ num[4] }}</td>
+        <td class="rqiu">{{ num[5] }}</td>
+        <td class="rqiu">{{ num[6] }}</td>
+        <td class="lqiu">{{ num[7] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</div>
+{% endblock %}

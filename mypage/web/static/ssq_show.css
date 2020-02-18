@@ -1,0 +1,31 @@
+
+div{
+    text-align:center
+}
+
+
+table{
+       margin: auto;
+       text-align: center;
+}
+
+.table{
+       width: 80%;
+       max-width: 100%;
+       margin-bottom: 20px;
+}
+
+.qihao{
+    font-weight:bold;
+    color: black;
+}
+
+.rqiu{
+    font-weight:bold;
+    color: red;
+}
+
+.lqiu{
+    font-weight:bold;
+    color: blue;
+}
